@@ -1,7 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import {Op} from 'sequelize';
-import { CreateBoilerPartDto } from './dto/create-boiler-part.dto';
-import { UpdateBoilerPartDto } from './dto/update-boiler-part.dto';
 import { InjectModel } from '@nestjs/sequelize';
 import { BoilerParts } from './boiler-parts.model';
 import { IBoilerPartsQuery } from './types';
