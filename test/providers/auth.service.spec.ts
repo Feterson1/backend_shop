@@ -8,10 +8,18 @@ import { ConfigModule } from '@nestjs/config';
 import { SequelizeConfigService } from 'src/config/sequelizeConfiguration.service';
 import { databaseConfig } from 'src/config/configuration';
 import { User } from 'src/users/users.model';
+import { AuthModule } from 'src/auth/auth.module';
+import { AuthService } from 'src/auth/auth.service';
 
+const mockedUser = {
+    username : 'Dima',
+    email: 'dima@bk.ru',
+    password: 'anna123,',
+};
 
-describe('Users Controller',() => {
+describe('Auth Controller',() => {
     let app : INestApplication;
+    let authService: AuthService;
 
     beforeEach(async () => {
         const testModule : TestingModule = await Test.createTestingModule({
@@ -22,38 +30,42 @@ describe('Users Controller',() => {
               ConfigModule.forRoot({
                 load: [databaseConfig],
               }),
-              UsersModule,]
+              AuthModule,]
         }).compile();
-
+        authService = testModule.get<AuthService>(AuthService);
         app = testModule.createNestApplication();
         await app.init();
     });
 
+    beforeEach(async () => {
+        const user = new User();
+        
+        const hashedPassword = await bcrypt.hash(mockedUser.password,10);
+        user.username = mockedUser.username;
+        user.password = hashedPassword;
+        user.email = mockedUser.email;
 
+        return user.save(); 
+
+    });
 
     afterEach(async () => {
-       
-        await User.destroy({where:{username:'test'}});
+        await User.destroy({where:{username:mockedUser.username}});
+        
 
     });
 
-    it('should create user',async () => {
+    it('Should login user',async () => {
 
-        const newUser = {
-            username : 'test',
-            email: 'test@bk.ru',
-            password: 'test123,',
-        };
-        const response = await request(app.getHttpServer())
-        .post('/users/signup')
-        .send(newUser);
+        const user = await authService.validateUser(mockedUser.username, mockedUser.password);
 
-        const passwordIsValid = await bcrypt.compare(newUser.password,response.body.password);
+      
 
-        expect(response.body.username).toBe(newUser.username);
-        expect(passwordIsValid).toBe(true);
-        expect(response.body.email).toBe(newUser.email);
+        expect(user.username).toBe(mockedUser.username);
+        expect(user.email).toBe(mockedUser.email);
     });
+
+  
 
   
 

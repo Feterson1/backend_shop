@@ -9,7 +9,7 @@ import { databaseConfig } from 'src/config/configuration';
 import { User } from 'src/users/users.model';
 import { UsersService } from 'src/users/users.service';
 
-describe('Users controller',() => {
+describe('Users Service',() => {
     let app : INestApplication;
     let usersService: UsersService;
 
