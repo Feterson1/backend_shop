@@ -24,7 +24,7 @@ const mockedUser = {
     password: 'anna123,',
 };
 
-describe('BoilerParts Controller',() => {
+describe('ShoppingCart Controller',() => {
     let app : INestApplication;
     let boilerPartsService: BoilerPartsService;
     let usersService: UsersService;
@@ -42,7 +42,7 @@ describe('BoilerParts Controller',() => {
               }),
               ShoppingCartModule,
               BoilerPartsModule,
-              AuthModule,]
+              ]
         }).compile();
 
         boilerPartsService = testModule.get<BoilerPartsService>(BoilerPartsService);
@@ -200,7 +200,7 @@ describe('BoilerParts Controller',() => {
         
 
         const user = await usersService.findOne({where:{username:mockedUser.username}});
-        
+
         await shoppingCartService.removeAll(user.id);
 
         const cart = await shoppingCartService.findAll(user.id);
