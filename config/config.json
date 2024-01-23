@@ -1,25 +1,25 @@
 {
   "development": {
-    "username": "root",
-    "password": "cyberpunk",
-    "database": "test",
-    "host": "localhost",
+    "username": "freedb_Feterson",
+    "password": "Z%Yb@x2%5zFshNk",
+    "database": "freedb_boilers_shop",
+    "host": "sql.freedb.tech",
     "dialect": "mysql",
     "port": 3306
   },
   "test": {
-    "username": "root",
-    "password": "cyberpunk",
-    "database": "test",
-    "host": "localhost",
+    "username": "freedb_Feterson",
+    "password": "Z%Yb@x2%5zFshNk",
+    "database": "freedb_boilers_shop",
+    "host": "sql.freedb.tech",
     "dialect": "mysql",
     "port": 3306
   },
   "production": {
-    "username": "root",
-    "password": "cyberpunk",
-    "database": "test",
-    "host": "localhost",
+    "username": "freedb_Feterson",
+    "password": "Z%Yb@x2%5zFshNk",
+    "database": "freedb_boilers_shop",
+    "host": "sql.freedb.tech",
     "dialect": "mysql",
     "port": 3306
   }
