@@ -31,7 +31,8 @@ async function bootstrap() {
     credentials: true,
     origin: [
       'http://localhost:3001',
-      'https://backendshop-production-660b.up.railway.app',
+      'clientshop-production.up.railway.app',
+      'https://client-shop-boilers.onrender.com',
     ],
   });
   await app.listen(process.env.PORT || 3000);
