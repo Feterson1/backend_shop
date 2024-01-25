@@ -29,11 +29,7 @@ async function bootstrap() {
   app.use(passport.session());
   app.enableCors({
     credentials: true,
-    origin: [
-      'http://localhost:3001',
-      'https://boilers-shop.onrender.com',
-      'backendshop-production-660b.up.railway.app',
-    ],
+    origin: ['http://localhost:3001', 'https://boilers-shop.onrender.com'],
   });
   await app.listen(process.env.PORT || 3000);
 }
