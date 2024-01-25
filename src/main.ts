@@ -31,7 +31,7 @@ async function bootstrap() {
     credentials: true,
     origin: [
       'http://localhost:3001',
-      'clientshop-production.up.railway.app',
+      'https://clientshop-production.up.railway.app',
       'https://client-shop-boilers.onrender.com',
     ],
   });
